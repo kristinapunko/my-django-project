@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-n^z-nettb6+_^+4=1gqn%)nh^q*@7b42h78erwq_y)m2kk(xb#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com','e3e9-93-175-201-119.ngrok-free.app','9c4f-93-175-200-212.ngrok-free.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com', '44.201.240.131','tourshoponline.online','e3e9-93-175-201-119.ngrok-free.app','9c4f-93-175-200-212.ngrok-free.app', 'localhost', '127.0.0.1']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
