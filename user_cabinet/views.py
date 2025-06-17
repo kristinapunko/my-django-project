@@ -138,7 +138,7 @@ class LiqPayButtonView(APIView):
             "order_id": f"booking-{booking.id}",
             "version": "3",
             "sandbox": 1,
-            "server_url": "https://e3e9-93-175-201-119.ngrok-free.app/cabinet/api/liqpay-callback/",
+            "server_url": "https://my-django-project-7203.onrender.com/cabinet/api/liqpay-callback/",
             "result_url": "https://kristinapunko-github-io-rmvi.vercel.app/",
             "public_key": settings.LIQPAY_PUBLIC_KEY
         }
