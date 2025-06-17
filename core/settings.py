@@ -13,6 +13,18 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
+from dotenv import load_dotenv
+from urllib.parse import urlparse
+
+STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+
+load_dotenv()
+
+# Replace the DATABASES section of your settings.py with this
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,9 +36,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n^z-nettb6+_^+4=1gqn%)nh^q*@7b42h78erwq_y)m2kk(xb#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com', '44.201.240.131','tourshoponline.online','e3e9-93-175-201-119.ngrok-free.app','9c4f-93-175-200-212.ngrok-free.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*.onrender.com', 'database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com', '44.201.240.131','tourshoponline.online','e3e9-93-175-201-119.ngrok-free.app','9c4f-93-175-200-212.ngrok-free.app', 'localhost', '127.0.0.1']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -90,19 +103,30 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tours',
+#         # 'NAME': 'postgres',
+#         'USER': 'usertours',
+#         'PASSWORD': 'mypassword', 
+#         'HOST': 'localhost',
+#         # 'HOST': 'database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com',
+#         'PORT': '5432', 
+#         'OPTIONS': {
+#             'client_encoding': 'UTF8',
+#         }
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'tours',
-        'NAME': 'postgres',
-        'USER': 'usertours',
-        'PASSWORD': 'mypassword', 
-        # 'HOST': 'localhost',
-        'HOST': 'database-1.cz06cyg4sfzw.us-west-2.rds.amazonaws.com',
-        'PORT': '5432', 
-        'OPTIONS': {
-            'client_encoding': 'UTF8',
-        }
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
     }
 }
 
