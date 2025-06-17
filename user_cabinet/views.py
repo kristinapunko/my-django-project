@@ -139,7 +139,7 @@ class LiqPayButtonView(APIView):
             "version": "3",
             "sandbox": 1,
             "server_url": "https://e3e9-93-175-201-119.ngrok-free.app/cabinet/api/liqpay-callback/",
-            "result_url": "http://localhost:5173",
+            "result_url": "https://kristinapunko-github-io-rmvi.vercel.app/",
             "public_key": settings.LIQPAY_PUBLIC_KEY
         }
 
