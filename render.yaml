@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: my-django-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn core.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: 'django-insecure-n^z-nettb6+_^+4=1gqn%)nh^q*@7b42h78erwq_y)m2kk(xb#'
+        value: your-secret-key
+      - key: DEBUG
+        value: False
