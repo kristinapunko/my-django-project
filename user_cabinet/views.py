@@ -139,7 +139,7 @@ class LiqPayButtonView(APIView):
             "version": "3",
             "sandbox": 1,
             "server_url": "https://my-django-project-7203.onrender.com/cabinet/api/liqpay-callback/",
-            "result_url": "https://kristinapunko-github-io-rmvi.vercel.app/",
+            "result_url": "https://my-travel-agency-rho.vercel.app/",
             "public_key": settings.LIQPAY_PUBLIC_KEY
         }
 
